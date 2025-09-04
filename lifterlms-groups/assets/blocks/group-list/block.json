@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "llms/group-list",
+  "title": "Group List",
+  "category": "llms-blocks",
+  "description": "Outputs a list of groups in a grid.",
+  "textdomain": "lifterlms-groups",
+  "attributes": {
+    "include": {
+      "type": "array",
+      "default": []
+    },
+    "exclude": {
+      "type": "array",
+      "default": []
+    },
+    "count": {
+      "type": "integer",
+      "default": 10
+    },
+    "columns": {
+      "type": "integer",
+      "default": 3
+    },
+    "llms_visibility": {
+      "type": "string"
+    },
+    "llms_visibility_in": {
+      "type": "string"
+    },
+    "llms_visibility_posts": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "editorStyle": "file:./index.css"
+}

@@ -1,0 +1,1 @@
+@media(min-width:700px){.wp-block-llms-group-list .llms-groups-card-list .llms-group{flex-basis:calc(100%/var(--wp--custom--group-list--columns, 3) - 10px);max-width:calc(100%/var(--wp--custom--group-list--columns, 3) - 10px)}}
