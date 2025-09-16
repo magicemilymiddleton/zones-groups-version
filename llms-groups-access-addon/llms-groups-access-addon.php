@@ -2,7 +2,7 @@
 /**
  * Plugin Name: LifterLMS Groups Advanced Access Addon
  * Description: Licenses & Group Orders with consent flow.
- * Version: Version 2.6
+ * Version: Version 2.7
  * Author: Misadventures LLC - Emily Middleton
  * Text Domain: llms-groups-access-addon
  */
@@ -33,6 +33,10 @@ require_once LLMSGAA_DIR . 'includes/Feature/UnifiedMemberManager.php';
 require_once LLMSGAA_DIR . 'includes/Feature/Shortcodes/StudentDashboard.php';
 require_once LLMSGAA_DIR . 'includes/Feature/Shortcodes/SingleLicenseActivation.php';
 \LLMSGAA\Feature\Shortcodes\SingleLicenseActivation::init();
+
+add_action( 'plugins_loaded', function() {
+    require_once plugin_dir_path( __FILE__ ) . 'includes/email-customization.php';
+}, 5 );
 
 
 

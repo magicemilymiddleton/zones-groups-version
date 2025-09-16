@@ -197,6 +197,15 @@ public static function handle_redeem_pass() {
     }
 
     $group_id = get_post_meta( $pass_id, 'group_id', true );
+    
+    // Extract pass identifier from title (e.g., DC1234)
+    $pass_identifier = '';
+    if ( preg_match( '/\b(DC\d+)\b/i', $pass->post_title, $matches ) ) {
+        $pass_identifier = $matches[1];
+    } else {
+        // Fallback: use pass ID if no DC code found
+        $pass_identifier = 'Pass-' . $pass_id;
+    }
 
     foreach ( $items as $item ) {
         $sku = sanitize_text_field( $item['sku'] ?? '' );
@@ -207,17 +216,28 @@ public static function handle_redeem_pass() {
         if ( ! $product_id ) {
             continue; // Skip if product ID couldn't be resolved
         }
+        
+        // Get the product title for better naming
+        $product_title = get_the_title( $product_id );
+        if ( empty( $product_title ) ) {
+            $product_title = $sku; // Fallback to SKU if title not found
+        }
 
         for ( $i = 0; $i < $qty; $i++ ) {
+            // Create descriptive title with pass identifier and product name
+            $order_title = sprintf( '%s for %s', $product_title, $pass_identifier );
+            
             $order_id = wp_insert_post([
                 'post_type'   => 'llms_group_order',
                 'post_status' => 'publish',
-                'post_title'  => "Redeemed Order - $sku",
+                'post_title'  => $order_title,
                 'meta_input'  => [
                     'group_id'   => $group_id,
                     'product_id' => $product_id,
                     'start_date' => $start_date,
                     'status'     => 'active',
+                    'source_pass_id' => $pass_id, // Track which pass created this order
+                    'source_pass_identifier' => $pass_identifier, // Store the identifier
                 ],
             ]);
         }
@@ -227,7 +247,6 @@ public static function handle_redeem_pass() {
 
     wp_safe_redirect( add_query_arg( 'redeemed', '1', get_permalink( $group_id ) ) );
     exit;
-
 }
 }
 
