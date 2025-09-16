@@ -1,0 +1,114 @@
+/* Hide the entire sidebar wrapper */
+.llms-group-sidebar,
+.llms-group-profile-sidebar {
+  display: none !important;
+}
+li.llms-group-menu-item.item--right.item--member-more {
+    display: none;
+}
+
+/* Let the main content span the full width */
+.llms-group-profile-content {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* LifterLMS-AA “Licenses" table styles */
+.llmsgaa-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 1.5em;
+  font-size: 16px;
+}
+
+.llmsgaa-table thead {
+  background-color: #f7f7f7;
+}
+
+.llmsgaa-table th,
+.llmsgaa-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.llmsgaa-table th {
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.llmsgaa-table tr:nth-child(even) td {
+  background-color: #fcfcfc;
+}
+
+.llmsgaa-table tr:last-child td {
+  border-bottom: none;
+}
+
+.llmsgaa-table a {
+  color: #0073aa;
+  text-decoration: none;
+}
+
+.llmsgaa-table a:hover {
+  text-decoration: underline;
+}
+
+/*control visibility for modals on member pages*/
+#llmsgaa-pass-modal,
+#llmsgaa-redeem-modal {
+  display: none;
+}
+
+#llmsgaa-pass-modal.is-visible,
+#llmsgaa-redeem-modal.is-visible {
+  display: flex;
+}
+
+
+/*make placeholder lighter color*/
+.llmsgaa-table input::placeholder {
+  color: #d3d3d3;
+}
+
+/*Styling for Group Members Page CSS*/
+.llmsgaa-box {
+  border: 1px solid #333333;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+
+.llmsgaa-table th, .llmsgaa-table td {
+padding: 6px 15px;
+}
+.llmsgaa-table {
+font-size: 14px;
+}
+
+.llms-group-name {
+margin-top: -105px;
+}
+.llms-group-profile-nav ul.llms-group-menu li.llms-group-menu-item a.llms-group-menu-link {
+font-size: 15px;
+}
+
+/*Remove Groups Reports Top area from appearing*/
+.llms-group-card-main {
+  display: none;
+}
+
+.llms-group-card-header {
+  display: none;
+}
+
+
+/*Hide Gap in Vimeo Video embed with white space above*/
+
+div.wp-block-embed__wrapper::before {
+	display: none !important;
+}
